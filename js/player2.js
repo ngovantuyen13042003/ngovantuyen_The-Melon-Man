@@ -1,4 +1,4 @@
-game.player = {
+game.player2 = {
     x: 54,
     y: 0,
     height: 24,
@@ -35,24 +35,35 @@ game.player = {
     animationFrameNumber: 0,
     collidesWithGround: true,
     animations: {
-        left: [{tileColumn: 4, tileRow: 0}, {tileColumn: 5, tileRow: 0}, {tileColumn: 4, tileRow: 0}, {tileColumn: 6, tileRow: 0}],
-        right: [{tileColumn: 9, tileRow: 0}, {tileColumn: 8, tileRow: 0}, {tileColumn: 9, tileRow: 0}, {tileColumn: 7, tileRow: 0}]
+        left: [
+            {tileColumn: 1, tileRow: 4}, // Walk left frame 1
+            {tileColumn: 2, tileRow: 4}, // Walk left frame 2
+            {tileColumn: 3, tileRow: 4}, // Walk left frame 3
+            {tileColumn: 4, tileRow: 4}  // Walk left frame 4
+        ],
+        right: [
+            {tileColumn: 4, tileRow: 4}, // Walk right frame 1
+            {tileColumn: 6, tileRow: 4}, // Walk right frame 2
+            {tileColumn: 7, tileRow: 4}, // Walk right frame 3
+            {tileColumn: 8, tileRow: 4}  // Walk right frame 4
+        ]
     },
     jump: function (type) {
-		if (!this.isInAir) {
-			clearInterval(this.fallInterval)
-			game.sounds.jump.play()
-			this.isInAir = true
-			this.startedJump = true
-			var startingY = this.y
-			var time = 1
-			maxHeight = 121
-			if (type == "fall") {
-				time = 30
-				maxHeight = 0
-			}
-			this.fallTimeout(startingY, time, maxHeight)
-		}
-	}
+        if (!this.isInAir) {
+            clearInterval(this.fallInterval)
+            game.sounds.jump.play()
+            this.isInAir = true
+            this.startedJump = true
+            var startingY = this.y
+            var time = 1
+            maxHeight = 121
+            if (type == "fall") {
+                time = 30
+                maxHeight = 0
+            }
+            this.fallTimeout(startingY, time, maxHeight)
+        }
+    }
 }
+
 
